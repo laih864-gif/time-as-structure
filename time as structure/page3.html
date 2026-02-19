@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Search</title>
+
+  <!-- Special Elite -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="page3.css" />
+</head>
+
+<body>
+  <main class="page">
+    
+    <p class="hint">Choose a feeling.</p>
+
+    <section class="picker" aria-label="Emotion picker">
+  <input class="pick" type="radio" name="mood" id="mood-joy" checked>
+  <label class="emoji" for="mood-joy" title="Joy / Happiness">😄</label>
+
+  <input class="pick" type="radio" name="mood" id="mood-sad">
+  <label class="emoji" for="mood-sad" title="Sadness">😭</label>
+
+  <input class="pick" type="radio" name="mood" id="mood-fear">
+  <label class="emoji" for="mood-fear" title="Fear">😨</label>
+
+  <input class="pick" type="radio" name="mood" id="mood-fatigue">
+  <label class="emoji" for="mood-fatigue" title="Fatigue / Exhaustion">🥱</label>
+
+  <input class="pick" type="radio" name="mood" id="mood-excite">
+  <label class="emoji" for="mood-excite" title="Excitement / Intensity">⚡️</label>
+
+  <!-- ✅ 注意：results 必须在 picker 里面（或至少在 inputs 后面同级） -->
+  <section class="results" aria-live="polite">
+    <article class="card joy">
+      <h2>Happiness</h2>
+      <h3>The Circular Ruins</h3>
+      <p>In general, his days were happy; when he closed his eyes, he thought: Now I will be with my son.</p>
+      <h3>The Garden of Forking Paths</h3>
+      <p>From utter terror I passed into a state of almost abject happiness.</p>
+      <h3>The Book of Sand</h3>
+      <p>I felt for that poor boy — more intimate to me even than a son of my flesh — a surge of love.</p>
+    </article>
+
+    <article class="card sad">
+      <h2>Sadness</h2>
+      <h3>The Circular Ruins</h3>
+      <p>With relief, with humiliation, with terror, he understood that he also was an illusion, that someone else was dreaming him.</p>
+      <h3>The Garden of Forking Paths</h3>
+      <p>I have been condemned to hang. Abominably, I have yet triumphed!</p>
+      <h3>The Book of Sand</h3>
+      <p>The death of this man, who was certainly never a friend of mine, has unaccountably saddened me.</p>
+    </article>
+
+    <article class="card fear">
+      <h2>Fear</h2>
+      <h3>The Circular Ruins</h3>
+      <p>He felt a chill of fear, and sought out a sepulchral niche in the dilapidated wall where he concealed himself among unfamiliar leaves.</p>
+      <h3>The Garden of Forking Paths</h3>
+      <p>I am a timorous man.</p>
+      <h3>The Book of Sand</h3>
+      <p>I felt the loneliness ringing me in, and I began fearing I'd never get back to Buenos Aires.</p>
+    </article>
+
+    <article class="card fatigue">
+      <h2>Exhaustion</h2>
+      <h3>The Circular Ruins</h3>
+      <p>This magic project had exhausted the entire expanse of his mind.</p>
+      <h3>The Garden of Forking Paths</h3>
+      <p>For an undetermined period of time I felt myself cut off from the world, an abstract spectator.</p>
+      <h3>The Book of Sand</h3>
+      <p>Loneliness does not worry me; life is difficult enough, putting up with yourself and with your own habits.</p>
+    </article>
+
+    <article class="card excite">
+      <h2>Excitement</h2>
+      <h3>The Circular Ruins</h3>
+      <p>He dreamed almost immediately, with his heart throbbing.</p>
+      <h3>The Garden of Forking Paths</h3>
+      <p>The duel had already started and I had won the first encounter.</p>
+      <h3>The Book of Sand</h3>
+      <p>I suddenly found myself — this was the way I felt — in the intimate heart of Buenos Aires and perhaps of the whole world.</p>
+    </article>
+  </section>
+</section>
+  </main>
+</body>
+</html>

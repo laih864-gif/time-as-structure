@@ -1,0 +1,133 @@
+body{
+  margin:0;
+  background:#e6df63;
+  font-family:"Special Elite", monospace;
+  color:#111;
+}
+
+/* 页面整体容器 */
+.page{
+  max-width:900px;
+  margin:0 auto;
+  padding:80px 40px;
+  text-align:center;
+}
+
+/* 标题 */
+h1{
+  font-size:28px;
+  margin-bottom:40px;
+}
+
+/* 表情区域 */
+/* 表情一排居中 */
+.picker{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap: 18px;
+  margin: 30px 0 46px;
+}
+
+/* 隐藏 radio */
+.pick{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+/* ✅ 强制圆形按钮（不会被拉长） */
+.emoji{
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;        /* 关键：不允许 flex 拉伸 */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  background: rgba(248,243,158,.55);
+
+  font-size: 30px;
+  line-height: 1;        /* 关键：避免高度被行高撑大 */
+  padding: 0;            /* 关键：别用 padding 撑开 */
+  cursor: pointer;
+  user-select:none;
+
+  transition: transform .18s ease, background .18s ease;
+}
+
+.emoji:hover{
+  transform: scale(1.08);
+  background: rgba(255,255,210,.9);
+}
+
+/* ✅ 选中态：高亮 */
+.pick:checked + .emoji{
+  background: rgba(255,255,210,.95);
+  transform: scale(1.10);
+}
+
+/* hover 效果 */
+.emoji:hover{
+  transform:scale(1.1);
+}
+
+/* 选中状态 */
+.pick:checked + .emoji{
+  background:#fff6b0;
+}
+
+/* 结果区 */
+.results{
+  margin-top: 0;
+}
+
+.card{
+  display:none;
+  width: min(760px, 92vw);
+  margin: 0 auto;
+  text-align: left;   /* 内容左对齐更像“文献/打字稿” */
+}
+/* 标题层级 */
+.card h2{
+  font-size:30px;
+  margin-bottom:20px;
+  text-align:center;
+}
+
+.card h3{
+  font-size:18px;
+  margin-top:30px;
+}
+
+.card p{
+  font-size:18px;
+  line-height:1.6;
+}
+/* 根据 checked 显示对应卡片 */
+#mood-joy:checked ~ .results .joy{ display:block; }
+#mood-sad:checked ~ .results .sad{ display:block; }
+#mood-fear:checked ~ .results .fear{ display:block; }
+#mood-fatigue:checked ~ .results .fatigue{ display:block; }
+#mood-excite:checked ~ .results .excite{ display:block; }
+
+/* 卡片排版（无边框，干净） */
+.card h2{
+  margin: 0 0 16px;
+  font-size: clamp(20px, 2.2vw, 28px);
+}
+
+.card h3{
+  margin: 18px 0 8px;
+  font-size: 18px;
+  letter-spacing: .01em;
+  opacity: .9;
+}
+
+.card p{
+  margin: 0;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.85;
+}

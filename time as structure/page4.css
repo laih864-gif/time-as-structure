@@ -1,0 +1,62 @@
+:root{
+  --paper: #fff36f;   /* 黄色背景 */
+  --ink: #1d2082;     /* 你的蓝（备用） */
+}
+
+*{ box-sizing: border-box; }
+
+html, body{ height: 100%; }
+
+body{
+  margin: 0;
+  background: var(--paper);
+  color: #0b0b0b;
+  font-family: "Special Elite", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+  /* 顶端留空隙 + 两侧留空隙 */
+  padding: clamp(40px, 7vh, 90px) clamp(22px, 6vw, 90px);
+}
+
+/* 页面内容居中（容器居中，不是文字居中） */
+.page{
+  width: min(900px, 92vw);
+  margin: 0 auto;   /* 关键：水平居中 */
+}
+
+/* H1 / H2 / P 层级 */
+h1{
+  margin: 0 0 28px;
+  font-size: clamp(28px, 3.2vw, 44px);
+  letter-spacing: .02em;
+}
+
+.block{
+  margin: 0 0 42px;
+}
+
+h2{
+  margin: 0 0 10px;
+  font-size: clamp(20px, 2.2vw, 28px);
+  letter-spacing: .01em;
+}
+
+.meta{
+  margin: 0 0 18px;
+  font-size: 16px;
+  opacity: .8;
+}
+
+.subhead{
+  margin: 18px 0 10px;
+  font-size: 18px;
+  opacity: .95;
+}
+
+p{
+  margin: 0 0 18px;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.85;
+}
+
+/* 让引用书名保持斜体 */
+em{ font-style: italic; }

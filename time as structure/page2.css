@@ -1,0 +1,44 @@
+:root{
+  /* 你的黄色背景（跟首页一致就好） */
+  --paper: #fff36f;
+  --ink: #1d2082;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  background: var(--paper);
+  color: #0b0b0b;
+
+  /* 确保字体生效 */
+  font-family: "Special Elite", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+  /* 居中 + 两边留白 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(28px, 6vw, 80px);
+}
+
+.notes{
+  width: min(820px, 92vw);   /* 两边有空隙 */
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+
+  margin-top: 150px;  
+
+}
+
+.notes p{
+  margin: 0 0 22px;
+}
+
+.notes em{
+  font-style: italic;
+}

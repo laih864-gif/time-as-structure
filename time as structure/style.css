@@ -1,0 +1,275 @@
+/* ===== 字体 ===== */
+@font-face{
+  font-family:"Pilowlava";
+  src:url("./Pilowlava-Regular.woff2") format("woff2");
+  font-display:swap;
+}
+@font-face{
+  font-family:"Velvelyne";
+  src:url("./Velvelyne-Regular.woff2") format("woff2");
+  font-display:swap;
+}
+
+/* ===== 颜色系统（保持你那套） ===== */
+:root{
+  --ink:#1d2082;               /* 蓝线 */
+  --paper:#fff36f;             /* 黄底 */
+  --paper-soft:#f8f39e;        /* 泡泡底黄 */
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background: var(--paper);
+}
+
+.corner-search{
+  position: fixed;
+  top: 32px;
+  right: 40px;
+
+  font-size: 32px;     /* 调整大小 */
+  text-decoration: none;
+
+  cursor: pointer;
+  z-index: 999;
+
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.corner-search:hover{
+  transform: scale(1.2);
+  opacity: .8;
+}
+
+/* 三个 section 统一黄底 + 顶部蓝渐变的“氛围” */
+.hero{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+
+  background: linear-gradient(
+    180deg,
+    #2c2f8f 0%,
+    #6f6a94 22%,
+    #b5b07b 46%,
+    #efe977 72%,
+    var(--paper) 100%);
+}
+
+/* ===== 第一屏：标题 ===== */
+.hero{
+  flex-direction:column;
+  padding: clamp(28px, 4vw, 60px);
+  text-align:center;
+}
+
+.hero h1{
+  margin:0;
+  font-family:"Pilowlava", serif;
+  letter-spacing:.06em;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height:1.05;
+  color:#0b0b0b;
+  text-transform:uppercase;
+}
+
+/* 轻微提示可删 */
+.scroll-hint{
+  margin-top: 32px;
+  font-size: 28px;
+  color: rgba(0,0,0,.55);
+}
+
+/* ===== 第二屏：蚂蚁 ===== */
+.ant-section{
+  min-height: 100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: var(--paper);
+  padding: clamp(24px, 4vw, 60px);
+}
+
+/* 关键：a 变成“盒子”，不影响 flex 居中 */
+.ant-link{
+  display: inline-block;
+  text-decoration: none;
+  line-height: 0;  /* 防止 a 的行高导致奇怪空隙 */
+}
+
+/* hover 放大：作用在 a 上更稳 */
+.ant-link{
+  transition: transform .28s ease;
+  cursor: pointer;
+}
+
+.ant-link:hover{
+  transform: scale(1.08);
+}
+
+/* 图片本身保持融合 */
+.ant{
+  width: min(900px, 88vw);
+  height: auto;
+  display: block;
+  filter: none;
+  box-shadow: none;
+}
+
+/* ===== 第三屏：泡泡（不重叠、均匀） ===== */
+.bubble-section{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding: clamp(30px, 5vw, 90px);
+  background: var(--paper); /* 纯黄 */
+}
+
+.bubble-grid{
+  width: min(980px, 92vw);
+  margin-inline: auto;              /* 强制水平居中 */
+  display: grid;
+
+  /* 关键：中间列更宽，左右列更窄 */
+  grid-template-columns: 0.85fr 1.3fr 0.85fr;
+
+  gap: clamp(22px, 3vw, 48px);
+  justify-items: center;
+  align-items: center;
+
+   margin-inline: auto;
+}
+
+/* 真·椭圆泡泡（图2那种） */
+.bubble{
+  font-family:"Velvelyne", serif;
+  color:#0b0b0b;
+
+  background: rgba(248,243,158,.55);
+  border: 4px solid var(--ink);
+  border-radius: 50%;
+
+  /* 用固定宽高做椭圆，而不是padding */
+  width: 240px;
+  height: 130px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size: clamp(22px, 2.2vw, 32px);
+  text-align:center;
+}
+
+/* hover 交互：除 Revelation 外的泡泡会变亮并弹出引文框 */
+.bubble:not(.bubble--center){
+  cursor: default;
+  position: relative; /* 给 tooltip 定位用 */
+}
+
+/* 变亮：更亮的底色 + 略微放大（可删） */
+.bubble:not(.bubble--center):hover{
+  background: rgba(255, 255, 210, .9);
+  transform: scale(1.02);
+}
+
+/* 引文框（tooltip）——用 data-title / data-quote 拼出来 */
+.bubble:not(.bubble--center)::after{
+  content: attr(data-title) "\A" attr(data-quote);
+  white-space: pre-line;
+
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 16px);
+  transform: translateX(-50%);
+
+  width: min(360px, 70vw);
+  padding: 14px 16px;
+
+  background: rgba(248,243,158,.95);
+  border: 4px solid var(--ink);
+  border-radius: 18px;
+
+  font-family: "Velvelyne", serif;
+  font-size: 18px;
+  line-height: 1.35;
+  color: #0b0b0b;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .12s ease, transform .12s ease;
+}
+
+/* hover 时显示框 */
+.bubble:not(.bubble--center):hover::after{
+  opacity: 1;
+  transform: translateX(-50%) translateY(2px);
+}
+
+.bubble:not(.bubble--center):hover{
+  background: rgba(255,255,210,.9);
+  transform: scale(1.02);
+  z-index: 50;           /* 关键 */
+}
+
+.bubble:not(.bubble--center):hover::after{
+  z-index: 100;          /* 让 tooltip 在最上面 */
+}
+
+/* （可选）避免 tooltip 被遮住 */
+.bubble-grid{
+  overflow: visible;
+}
+
+/* 中间最大椭圆 */
+.bubble--center{
+  grid-column: 2;
+  grid-row: 2;
+
+  width: 100%;        /* 吃满中间那一列 */
+  max-width: 640px;   /* 控制别太大 */
+  height: 180px;
+
+  font-size: clamp(26px, 3vw, 42px);
+  border-width: 5px;
+}
+
+/* 让 a 看起来和 div 一样 */
+.bubble--link{
+  text-decoration: none;
+  color: #0b0b0b;
+  cursor: pointer;
+  transition: 
+    transform .2s ease,
+    background .2s ease,
+    box-shadow .2s ease;
+}
+
+/* hover 效果 */
+.bubble--link:hover{
+  background: rgba(255, 255, 210, .95);
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(30,40,150,.25);
+}
+
+/* 让其它项别挤到中心：把 “Revelation” 这一格腾出来 */
+.bubble-grid > :nth-child(5){
+  /* 这里是 Revelation，本来已经grid指定了，留着也行 */
+}
+
+/* 小屏适配：改成两列，依然不重叠 */
+@media (max-width: 720px){
+  .bubble-grid{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  .bubble--center{
+    grid-column: 1 / -1; /* 占满两列居中 */
+    grid-row: auto;
+  }
+}
